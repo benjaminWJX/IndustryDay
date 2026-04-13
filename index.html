@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Benjamin Wee | Food Science & Technology</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: #FAFAFA;
+      min-height: 100vh;
+      color: #1a1a1a;
+      line-height: 1.6;
+    }
+
+    /* Header Banner */
+    .header-banner {
+      background: linear-gradient(135deg, #1E3A2F 0%, #2C5F4A 100%);
+      padding: 40px 20px 50px;
+      text-align: center;
+      position: relative;
+    }
+
+    .header-banner::after {
+      content: '';
+      position: absolute;
+      bottom: -20px;
+      left: 0;
+      right: 0;
+      height: 40px;
+      background: #FAFAFA;
+      border-radius: 24px 24px 0 0;
+    }
+
+    .header-content {
+      max-width: 500px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .header-badge {
+      display: inline-block;
+      background: rgba(255,255,255,0.15);
+      color: rgba(255,255,255,0.9);
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+      margin-bottom: 16px;
+      backdrop-filter: blur(10px);
+    }
+
+    .header-name {
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: white;
+      margin-bottom: 8px;
+      letter-spacing: -0.5px;
+    }
+
+    .header-title {
+      font-size: 0.95rem;
+      color: rgba(255,255,255,0.85);
+      font-weight: 500;
+    }
+
+    /* Main Container */
+    .container {
+      max-width: 440px;
+      margin: 0 auto;
+      padding: 10px 20px 40px;
+    }
+
+    /* Profile Card */
+    .profile-card {
+      background: white;
+      border-radius: 16px;
+      padding: 24px;
+      margin-bottom: 16px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    }
+
+    .profile-intro {
+      font-size: 0.95rem;
+      color: #444;
+      line-height: 1.7;
+      margin-bottom: 20px;
+    }
+
+    .profile-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .tag {
+      background: #F0F4F1;
+      color: #2C5F4A;
+      padding: 6px 12px;
+      border-radius: 8px;
+      font-size: 0.8rem;
+      font-weight: 500;
+    }
+
+    /* Section Card */
+    .section-card {
+      background: white;
+      border-radius: 16px;
+      padding: 24px;
+      margin-bottom: 16px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    }
+
+    .section-title {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: #888;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+    }
+
+    /* Document Links */
+    .doc-links {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .doc-link {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 14px 16px;
+      background: #FAFAFA;
+      border-radius: 12px;
+      text-decoration: none;
+      color: #1a1a1a;
+      transition: all 0.2s ease;
+      border: 1px solid #EAEAEA;
+    }
+
+    .doc-link:hover {
+      background: #F0F4F1;
+      border-color: #2C5F4A;
+      transform: translateY(-1px);
+    }
+
+    .doc-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .doc-icon.linkedin { background: #0077B5; }
+    .doc-icon.cv { background: #2C5F4A; }
+    .doc-icon.testimonial { background: #D4A574; }
+    .doc-icon.poster { background: #6B7C93; }
+
+    .doc-icon svg {
+      width: 20px;
+      height: 20px;
+      fill: white;
+    }
+
+    .doc-info {
+      flex: 1;
+    }
+
+    .doc-title {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: #1a1a1a;
+      margin-bottom: 2px;
+    }
+
+    .doc-desc {
+      font-size: 0.8rem;
+      color: #666;
+    }
+
+    .doc-arrow {
+      color: #999;
+      font-size: 1.2rem;
+    }
+
+    /* Conversation Starter */
+    .wheel-card {
+      background: linear-gradient(135deg, #1E3A2F 0%, #2C5F4A 100%);
+      border-radius: 16px;
+      padding: 28px 24px;
+      margin-bottom: 16px;
+      text-align: center;
+      box-shadow: 0 4px 20px rgba(30,58,47,0.25);
+    }
+
+    .wheel-title {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: rgba(255,255,255,0.7);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 6px;
+    }
+
+    .wheel-subtitle {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: white;
+      margin-bottom: 24px;
+    }
+
+    .wheel-container {
+      position: relative;
+      width: 220px;
+      height: 220px;
+      margin: 0 auto 24px;
+    }
+
+    .wheel {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+      transition: transform 4s cubic-bezier(0.17, 0.67, 0.12, 0.99);
+      border: 4px solid rgba(255,255,255,0.3);
+    }
+
+    .pointer {
+      position: absolute;
+      top: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 0;
+      border-left: 12px solid transparent;
+      border-right: 12px solid transparent;
+      border-top: 24px solid white;
+      z-index: 10;
+      filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+    }
+
+    .center-circle {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 36px;
+      height: 36px;
+      background: white;
+      border-radius: 50%;
+      z-index: 5;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    }
+
+    .spin-btn {
+      background: white;
+      color: #1E3A2F;
+      border: none;
+      padding: 12px 36px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+
+    .spin-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.2);
+    }
+
+    .spin-btn:disabled {
+      opacity: 0.7;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .result {
+      margin-top: 20px;
+      min-height: 60px;
+    }
+
+    .result-topic {
+      font-size: 1rem;
+      font-weight: 500;
+      color: white;
+      opacity: 0;
+      transform: translateY(10px);
+      transition: all 0.4s ease;
+      line-height: 1.5;
+    }
+
+    .result-topic.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Contact Card */
+    .contact-card {
+      background: white;
+      border-radius: 16px;
+      padding: 24px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    }
+
+    .contact-row {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 10px 0;
+    }
+
+    .contact-row:not(:last-child) {
+      border-bottom: 1px solid #F0F0F0;
+    }
+
+    .contact-icon {
+      width: 36px;
+      height: 36px;
+      background: #F0F4F1;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .contact-icon svg {
+      width: 18px;
+      height: 18px;
+      fill: #2C5F4A;
+    }
+
+    .contact-text {
+      flex: 1;
+    }
+
+    .contact-label {
+      font-size: 0.75rem;
+      color: #888;
+      margin-bottom: 2px;
+    }
+
+    .contact-value {
+      font-size: 0.9rem;
+      color: #1a1a1a;
+      font-weight: 500;
+    }
+
+    .contact-value a {
+      color: #2C5F4A;
+      text-decoration: none;
+    }
+
+    .contact-value a:hover {
+      text-decoration: underline;
+    }
+
+    /* Footer */
+    .footer {
+      text-align: center;
+      padding: 24px 20px;
+      font-size: 0.8rem;
+      color: #999;
+    }
+
+    .footer-event {
+      font-weight: 600;
+      color: #666;
+      margin-bottom: 4px;
+    }
+  </style>
+</head>
+<body>
+  <!-- Header Banner -->
+  <div class="header-banner">
+    <div class="header-content">
+      <div class="header-badge">FST Industry Day 2026</div>
+      <h1 class="header-name">Wee Jing Xuan, Benjamin</h1>
+      <p class="header-title">BSc (Hons) Food Science & Technology | NUS</p>
+    </div>
+  </div>
+
+  <div class="container">
+    <!-- Profile Card -->
+    <div class="profile-card">
+      <p class="profile-intro">
+        Aspiring flavourist passionate about flavour creation and sensory science. Excited to create innovative products that delight consumers and spark creativity.
+      </p>
+      <div class="profile-tags">
+        <span class="tag">Flavour Compounding</span>
+        <span class="tag">Sensory Evaluation</span>
+        <span class="tag">GC-MS Analysis</span>
+        <span class="tag">Product Development</span>
+      </div>
+    </div>
+
+    <!-- Documents Section -->
+    <div class="section-card">
+      <h2 class="section-title">Documents</h2>
+      <div class="doc-links">
+        <a href="https://www.linkedin.com/in/benjamin-wee-4612ab232/" target="_blank" class="doc-link">
+          <div class="doc-icon linkedin">
+            <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          </div>
+          <div class="doc-info">
+            <div class="doc-title">LinkedIn Profile</div>
+            <div class="doc-desc">Connect with me</div>
+          </div>
+          <span class="doc-arrow">›</span>
+        </a>
+        
+        <a href="Wee_Jing_Xuan_Benjamin_Poster.pdf" target="_blank" class="doc-link">
+          <div class="doc-icon poster">
+            <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V5h14v14zm-7-2h2v-4h4v-2h-4V7h-2v4H8v2h4z"/></svg>
+          </div>
+          <div class="doc-info">
+            <div class="doc-title">Internship Poster</div>
+            <div class="doc-desc">View full poster (PDF)</div>
+          </div>
+          <span class="doc-arrow">›</span>
+        </a>
+
+        <a href="Wee_Jing_Xuan_Benjamin_Resume.pdf" target="_blank" class="doc-link">
+          <div class="doc-icon cv">
+            <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm4 18H6V4h7v5h5v11z"/></svg>
+          </div>
+          <div class="doc-info">
+            <div class="doc-title">Resume</div>
+            <div class="doc-desc">Download Resume (PDF)</div>
+          </div>
+          <span class="doc-arrow">›</span>
+        </a>
+
+        <a href="Internship Testimonials.pdf" target="_blank" class="doc-link">
+          <div class="doc-icon testimonial">
+            <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+          </div>
+          <div class="doc-info">
+            <div class="doc-title">Testimonials</div>
+            <div class="doc-desc">Internship feedback</div>
+          </div>
+          <span class="doc-arrow">›</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Conversation Starter -->
+    <div class="wheel-card">
+      <h2 class="wheel-title">Unsure where to start?</h2>
+      <p class="wheel-subtitle">Spin the wheel to pick a topic to ask me!</p>
+      <p>Or ask me directly if you have something on your mind</p>
+
+
+      <div class="wheel-container">
+        <div class="pointer"></div>
+        <div class="wheel" id="wheel"></div>
+        <div class="center-circle"></div>
+      </div>
+
+      <button class="spin-btn" id="spinBtn" onclick="spinWheel()">Spin the Wheel</button>
+
+      <div class="result">
+        <div class="result-topic" id="resultTopic"></div>
+      </div>
+    </div>
+
+    <!-- Contact Card -->
+    <div class="contact-card">
+      <h2 class="section-title">Contact</h2>
+      
+      <div class="contact-row">
+        <div class="contact-icon">
+          <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+        </div>
+        <div class="contact-text">
+          <div class="contact-label">Email</div>
+          <div class="contact-value">benjaminWJX@gmail.com</div>
+        </div>
+      </div>
+
+      <div class="contact-row">
+        <div class="contact-icon">
+          <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+        </div>
+        <div class="contact-text">
+          <div class="contact-label">Phone</div>
+          <div class="contact-value">+65 8822 2780</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <div class="footer-event">FST Industry Day</div>
+    <div>15 April 2026 • LT31</div>
+  </div>
+
+  <script>
+    const topics = [
+      { prompt: "Walk me through your banana flavour creation project." },
+      { prompt: "What was your biggest challenge and how did you overcome it?" },
+      { prompt: "How did your coursework prepare you for this role?" },
+      { prompt: "How did you get your internship?" },
+      { prompt: "What was your most memorable experience from the internship?" },
+      { prompt: "What was your greatest achievement?" },
+      { prompt: "What was a mistake you learnt from?" },
+      { prompt: "Why are you interested in the flavourist field?" },
+      { prompt: "What was the most interesting flavour you encountered?" },
+      { prompt: "What is a flavour you failed to compound?" }
+    ];
+
+    const wheel = document.getElementById('wheel');
+    const spinBtn = document.getElementById('spinBtn');
+    const resultTopic = document.getElementById('resultTopic');
+    
+    let currentRotation = 0;
+    let isSpinning = false;
+
+    function createWheel() {
+      const numSegments = topics.length;
+      const segmentAngle = 360 / numSegments;
+      
+      const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+      svg.setAttribute("viewBox", "0 0 100 100");
+      svg.style.width = "100%";
+      svg.style.height = "100%";
+      svg.style.position = "absolute";
+      svg.style.top = "0";
+      svg.style.left = "0";
+      
+      const colors = [
+        "#1E3A2F", "#D4A574", "#2C5F4A", "#8B9D83", "#3D6B5A",
+        "#C49A6C", "#4A7C69", "#A8B89E", "#5A8F7A", "#BDA27E"
+      ];
+      
+      topics.forEach((topic, i) => {
+        const startAngle = (i * segmentAngle - 90) * Math.PI / 180;
+        const endAngle = ((i + 1) * segmentAngle - 90) * Math.PI / 180;
+        
+        const x1 = 50 + 50 * Math.cos(startAngle);
+        const y1 = 50 + 50 * Math.sin(startAngle);
+        const x2 = 50 + 50 * Math.cos(endAngle);
+        const y2 = 50 + 50 * Math.sin(endAngle);
+        
+        const largeArc = segmentAngle > 180 ? 1 : 0;
+        
+        const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+        path.setAttribute("d", `M 50 50 L ${x1} ${y1} A 50 50 0 ${largeArc} 1 ${x2} ${y2} Z`);
+        path.setAttribute("fill", colors[i % colors.length]);
+        svg.appendChild(path);
+      });
+      
+      wheel.appendChild(svg);
+    }
+
+    function spinWheel() {
+      if (isSpinning) return;
+      
+      isSpinning = true;
+      spinBtn.disabled = true;
+      resultTopic.classList.remove('show');
+      
+      const spinDegrees = 1800 + Math.floor(Math.random() * 1440);
+      currentRotation += spinDegrees;
+      
+      wheel.style.transform = `rotate(${currentRotation}deg)`;
+      
+      setTimeout(() => {
+        const segmentAngle = 360 / topics.length;
+        const normalizedRotation = currentRotation % 360;
+        const pointerAngle = (360 - normalizedRotation + 90) % 360;
+        const winningIndex = Math.floor(pointerAngle / segmentAngle) % topics.length;
+        
+        const winner = topics[winningIndex];
+        
+        resultTopic.textContent = winner.prompt;
+        resultTopic.classList.add('show');
+        
+        isSpinning = false;
+        spinBtn.disabled = false;
+      }, 4200);
+    }
+
+    createWheel();
+  </script>
+</body>
+</html>
